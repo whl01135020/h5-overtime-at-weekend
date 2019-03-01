@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>12456</title>
+	<meta charset="utf-8"/>
+	<!-- <meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen"> -->
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="./libs/flexible.js"></script>
+	<script src="./libs/zepto.js"></script>
+	<script src="./libs/vue.js"></script>
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="./libs/echarts.common.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://hm.baidu.com/hm.jsd69321757dcfbfbe09dbddd4dca87b28"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+
+<body>
+	<div id="wrapper" class="main-content">
+		<div class="main-box">
+			<header class="title v1"><img src="./static/img/tt.png"></header>
+			<div class="name-box inline">
+				
+				<div class="inline">
+					<label class="name-label">姓名:</label>
+					<Select v-model="personData.name"  
+						:label-in-value="true"
+						id="nameSelect" 
+						class="form-control inline"
+					>
+						<Option :value="item.name" v-for="(item, index) in nameList" :key="index">
+							{{item.name}}
+						</Option>
+					</Select>
+					<br>
+					<div class="select-item flex-wrap wrap flex-ac" @click="changeSelect(1)" :class="{active:personData.name == ''}">
+						<img src="./static/img/circle-active.png" alt="" v-if="currentSelect == 1">
+						<img src="./static/img/circle.png" alt="" v-else >
+						<span>&nbsp;No</span>
+					</div>
+					<div class="select-item flex-wrap wrap flex-ac" @click="changeSelect(2)" :class="{active:personData.name==''}">
+						<img src="./static/img/circle-active.png" alt="" v-if="currentSelect == 2">
+						<img src="./static/img/circle.png" alt="" v-else >
+						<span>&nbsp;Add</span>
+					</div>
+				</div>
+			</div>
+			<div class="time-box" :class="{active:currentSelect == 1}">
+				<label for="">时间:</label>
+				<span>周六</span>
+				<Select v-model="personData.six" class="form-control inline" id="sixSelect" :disabled="noAddDisable">
+					<Option :value="item.time" v-for="(item, index) in timeList" :key="index">
+						{{item.time}}
+					</Option>
+				</Select>
+				<span>周天</span>
+				<Select v-model="personData.seven" class="form-control inline" id="sevenSelect" :disabled="noAddDisable">
+					<Option :value="item.time" v-for="(item, index) in timeList" :key="index">
+						{{item.time}}
+					</Option>
+				</Select>
+				<br>
+			</div>
+			<div class="summary-box">
+				<div class="title v2">统计结果</div>
+				<div>
+					<p class="add-analysis">
+						<span class="add-date">No</span>
+						<div class="strategy-item inline" v-for="(noAdd, index) in noAddPerson" @click="removeNoAdd(noAdd,index)">
+							{{noAdd}}<div class="name-close inline">+</div>
+						</div>
+					</p>
+					<p class="add-analysis">
+						<span class="add-date">周六</span>
+						<div class="strategy-item inline" v-for="(sixAdd, index) in sixAddPerson"  @click="removeSixAdd(sixAdd,index)">
+							{{sixAdd}}<div class="name-close inline">+</div>
+						</div>
+					</p>
+					<p class="add-analysis">
+						<span class="add-date">周日</span>
+						<div class="strategy-item inline" v-for="(sevenAdd, index) in sevenAddPerson" @click="removeSevenAdd(sevenAdd,index)">
+							{{sevenAdd}}<div class="name-close inline">+</div>
+						</div>
+					</p>
+				</div>
+			</div>
+			<ul id="myTab" class="box nav nav-tabs">
+				<li class="active">
+					<a href="#pieChartBox" data-toggle="tab">统计结果饼图展示</a>
+				</li>
+				<li>
+					<a href="#barChartBox" data-toggle="tab">统计结果柱状图展示</a>
+				</li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div class="chart-box tab-pane fade in active" id="pieChartBox">
+					<div id="chart" class="chart"></div>
+				</div>
+				<div class="chart-box tab-pane fade" id="barChartBox">
+					<div id="barChart" class="chart"></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<script src="index.js"></script>
+</body>
+
+</html>
