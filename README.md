@@ -1,5 +1,5 @@
 加班统计系统实现说明：
-该项目是移动端项目，也适配pc端
+该项目是移动端项目
 
 该项目所用技术主要有：vue.js,bootstrap,jquery,javaScript,flexible.js,echarts,html5,css3
 
