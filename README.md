@@ -2,6 +2,7 @@
 ========
 该项目是移动端项目
 --------
+* #### 该项目是用fis3构建
 * #### 该项目所用技术主要有：vue.js,bootstrap,jquery,javaScript,flexible.js,echarts,html5,css3
 * #### 设计思想：
        用于统计公司周末加班和不加班人数，通过标签形式直接展示出来统计的人名， 
