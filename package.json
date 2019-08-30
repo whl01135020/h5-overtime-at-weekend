@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "fis3-postprocessor-autoprefixer": "^1.0.1"
+  }
+}
